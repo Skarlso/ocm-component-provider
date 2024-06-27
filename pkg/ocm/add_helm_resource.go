@@ -37,8 +37,8 @@ type ResourceOptions struct {
 	Location  string
 }
 
-// AddResource adds a resource to a component descriptor based on the given Helm Chart details.
-func AddResource(cd *Component, opts ResourceOptions) error {
+// AddHelmResource adds a resource to a component descriptor based on the given Helm Chart details.
+func AddHelmResource(cd *Component, opts ResourceOptions) error {
 	info, err := os.Stat(opts.Location)
 	if err != nil {
 		return err

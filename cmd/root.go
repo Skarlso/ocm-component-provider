@@ -53,8 +53,13 @@ func runGenerateCmd(_ *cobra.Command, _ []string) error {
 		},
 	}
 
-	if err := ocm.AddResource(comp, ocm.ResourceOptions{Location: rootArgs.input, ChartName: rootArgs.chartName}); err != nil {
-		return fmt.Errorf("could not add resource: %w", err)
+	opts := ocm.ResourceOptions{Location: rootArgs.input, ChartName: rootArgs.chartName}
+	if err := ocm.AddHelmResource(comp, opts); err != nil {
+		return fmt.Errorf("could not add helm resource: %w", err)
+	}
+
+	if err := ocm.AddImageResource(comp, opts); err != nil {
+		return fmt.Errorf("could not add image resource: %w", err)
 	}
 
 	components := &ocm.Components{

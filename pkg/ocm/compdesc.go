@@ -16,7 +16,8 @@ type Components struct {
 // Resource represents an input resource.
 type Resource struct {
 	ocm.ResourceMeta `json:",inline"`
-	Input            runtime.UnstructuredConverter `json:"input"`
+	Input            runtime.UnstructuredConverter `json:"input,omitempty"`
+	Access           runtime.UnstructuredConverter `json:"access,omitempty"`
 }
 
 type Component struct {
